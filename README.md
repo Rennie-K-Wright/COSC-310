@@ -15,11 +15,9 @@ Example:
 
 Search for Obama
 
-                                                          Barack Hussein Obama II ( (listen) bə-RAHK hoo-SAYN oh-BAH-mə; born August 4, 1961) is an American politician and attorney who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, Obama was the first African-American  president of the United States.
-Read more at https://en.wikipedia.org/wiki/Barack_Obama
+                                                          Barack Hussein Obama II ( (listen) bə-RAHK hoo-SAYN oh-BAH-mə; born August 4, 1961) is an American politician and attorney who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, Obama was the first African-American  president of the United States. Read more at https://en.wikipedia.org/wiki/Barack_Obama
                                             
 Tell me about Barack Obama                            
 
-                                                          Barack Hussein Obama II ( (listen) bə-RAHK hoo-SAYN oh-BAH-mə; born August 4, 1961) is an American politician and attorney who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, Obama was the first African-American  president of the United States.
-Read more at https://en.wikipedia.org/wiki/Barack_Obama
+                                                          Barack Hussein Obama II ( (listen) bə-RAHK hoo-SAYN oh-BAH-mə; born August 4, 1961) is an American politician and attorney who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, Obama was the first African-American  president of the United States. Read more at https://en.wikipedia.org/wiki/Barack_Obama
 
