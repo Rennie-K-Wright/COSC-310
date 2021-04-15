@@ -113,10 +113,30 @@ def wikiConverse(userInput):
     reply += "\nRead more at " + wiki.url
     return reply
 
-def translateInput(reply):
+def isEnglish(userInput):
     translator = Translator()
-    out = translator.translate(reply, dest='fr', src='en')
-    print(out)
+    language = translator.detect(userInput).lang
+    if (language != 'en'):
+        return False
+    else:
+        return True
+
+def toEnglish(userInput):
+    translator = Translator()
+    out = translator.translate(userInput)
+    return out.text
+
+def getLanguage(userInput):
+    translator = Translator()
+    language = translator.detect(userInput).lang
+    return language
+    
+
+def translateFromEnglish(reply, destination):
+    translator = Translator()
+    translation = translator.translate(reply, dest=destination, src='en')
+    out = translation.text
+    return out
 # this function replaces words with synonyms and tries to converse with them
 # if no synonym is found, it will output the default reply
 def tryConverseWithSynonyms(userIn):
@@ -168,6 +188,7 @@ def sendClick():
     truth1 = checkForNum(userInput)
     truth2 = checkPolarity(userInput)
     truth3 = checkForWiki(userInput)
+    truth4 = isEnglish(userInput)
     if (truth == True):
         reply = "Sorry. I don't understand currency well. Can you try again?"
     else:
@@ -180,13 +201,21 @@ def sendClick():
                 if (truth3 == True):
                     reply = wikiConverse(userInput)
                 else:
-                    reply = tryConverseWithSynonyms(userInput)
-                    #translateInput(reply)
+                    if (truth4 == True):
+                        reply = tryConverseWithSynonyms(userInput)
+                        #reply += "\n                        " + translateInput(reply)
+                    else:
+                        language = getLanguage(userInput)
+                        englishInput = toEnglish(userInput)
+                        print(englishInput)
+                        englishReply = tryConverseWithSynonyms(englishInput)
+                        reply = translateFromEnglish(englishReply, language)
+                        
     output = ""
     chatWin.configure(state="normal")
     if "To begin" in chatWin.get("1.0", END):
         chatWin.delete("1.0", END)
-        output = userInput + "\n                        " + reply + "\n"
+        output = userInput + "\n                      " + reply + "\n"
     else:
         output = "\n" + userInput + "\n        " + reply + "\n"
     chatWin.insert(END, output)
@@ -219,7 +248,7 @@ root.resizable(width=FALSE, height=FALSE)
 # this section is textboxes that will be placed by the beginClick function
 # chat window
 chatWin = Text(root, bd=1, bg="black", width=50, height=8, font=("Arial", 25), foreground="#00FFFF", wrap=WORD)
-chatWin.insert(END, "To begin chatting type your message into the textbox on the bottom\n I will reply to you in English and French but I can't take French as an input!\nIf you want me to look something up on Wikipedia for you enter 'Search for ' or 'Tell me about ' then what you want me to look up")
+chatWin.insert(END, "To begin chatting type your message into the textbox on the bottom\n I will talk to you in any language you want!\nIf you want me to look something up on Wikipedia for you enter 'Search for ' or 'Tell me about ' then what you want me to look up")
 chatWin.configure(state="disabled")
 # Message window
 mesWin = Text(root, bd=0, bg="black", width="30", height="4", font=("Arial", 23), foreground="#00ffff")
